@@ -17,6 +17,14 @@ const Sidebar = () =>{
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Profile
                             </Link>
+                            <Link className="nav-link" to="/admin/add-category">
+                                <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                                Add Category
+                            </Link>
+                            <Link className="nav-link" to="/admin/show-category">
+                                <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
+                                Show Category
+                            </Link>
                             <Link className="nav-link" to="/">
                                 <div className="sb-nav-link-icon"><i className="fas fa-tachometer-alt"></i></div>
                                 Home
@@ -77,7 +85,7 @@ const Sidebar = () =>{
                     </div>
                     <div className="sb-sidenav-footer">
                         <div className="small">Logged in as:</div>
-                        Start Bootstrap
+                        Izzy
                     </div>
                 </nav>
 

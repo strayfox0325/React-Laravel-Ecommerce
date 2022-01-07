@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <Link to="/admin"
       className="navbar-brand ps-3">
-        Start Bootstrap
+        Izzy Tech Store
       </Link>
       <button
         className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
