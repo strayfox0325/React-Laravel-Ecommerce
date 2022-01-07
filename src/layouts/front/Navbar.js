@@ -52,7 +52,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Izzy E-comm
+          Izzy Tech Store
         </Link>
         <button
           className="navbar-toggler"
@@ -73,11 +73,10 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/admin/dashboard">
+              <Link className="nav-link active " to="/admin/dashboard">
                 Dashboard
               </Link>
             </li>
-           
             {AuthButtons}
           </ul>
         </div>

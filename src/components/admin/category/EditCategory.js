@@ -13,6 +13,7 @@ function EditCategory(props) {
     const [error,setError]=useState([]);
 
     useEffect(()=>{
+      document.title='Izzy Tech | Change Category';
         const category_id=props.match.params.id;
         axios.get(`/api/edit-category/${category_id}`).then(res=>{
            if(res.data.status===200){
@@ -56,7 +57,6 @@ function EditCategory(props) {
 
   return (
     <div className="container px-4">
-      <Link to="/admin/show-category" className="btn btn-primary btn-sm">Back</Link>
       <form onSubmit={updateCategory}>
 <ul className="nav nav-tabs" id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
@@ -100,6 +100,8 @@ function EditCategory(props) {
           </div>
       </div>
 </div>
+<Link to="/admin/show-category" className="btn btn-primary mb-3 px-4 float-start">Back</Link>
+
 <button type="submit" className="btn btn-primary px-4 float-end">Update</button>
 </form>
     </div>

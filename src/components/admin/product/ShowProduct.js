@@ -10,6 +10,7 @@ const[productlist,setProductlist]=useState([]);
 
 useEffect(()=>{
 
+    document.title='Izzy Tech | Products';
         axios.get(`/api/show-product`).then(res=>{
             if(res.data.status===200){
                 setProductlist(res.data.product);
@@ -41,7 +42,7 @@ if(loading){
         return (
             <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.category_id}</td>
+                <td>{item.category.name}</td>
                 <td>{item.name}</td>
                 <td>{item.selling_price}</td>
                 <td><img src={`http://localhost:8000/${item.image}`} width="50px"alt={item.name}/></td>

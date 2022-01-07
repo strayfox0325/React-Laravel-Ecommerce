@@ -79,6 +79,7 @@ function Product() {
 
 
     useEffect(()=>{
+      document.title='Izzy Tech | New Product';
       axios.get(`/api/all-category`).then(res=>{
           if(res.data.status===200){
               setCategorylist(res.data.category);
@@ -92,6 +93,8 @@ if(loading){
 
   return (
     <div className="container-fluid px-4">
+      <div className="card mt-4">
+    <div className="card-header"></div>
       <h1 className="mt-4">Add Product</h1>
       <form encType="multipart/form-data" onSubmit={submitProduct} id="product_form">
 
@@ -215,6 +218,8 @@ if(loading){
 </div>
 <button type="submit" className="btn btn-primary px-4 mt-4">Submit</button>
 </form>
+</div>
+
     </div>
   );
 }

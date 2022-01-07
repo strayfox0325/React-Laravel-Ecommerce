@@ -21,7 +21,7 @@ function Category() {
         setCategory({...categoryInput,[e.target.name]: e.target.value});
     }
 
-
+    document.title='Izzy Tech | New Category';
     const submitCategory=(e)=>{
         e.preventDefault();
         const data={

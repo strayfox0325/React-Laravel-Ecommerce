@@ -9,7 +9,7 @@ const[loading,setLoading]=useState(true);
 const[categorylist,setCategorylist]=useState([]);
 
 useEffect(()=>{
-
+    document.title='Izzy Tech | Categories';
         axios.get(`/api/show-category`).then(res=>{
             if(res.data.status===200){
                 setCategorylist(res.data.category);
