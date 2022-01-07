@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect,useState } from "react";
 import {Link} from 'react-router-dom';
-
+import swal from "sweetalert";
 
 function ShowCategory() {
 
@@ -18,6 +18,21 @@ useEffect(()=>{
         });
 },[]);
 
+const deleteCategory=(e,id)=>{
+    e.preventDefault();
+    const clicked=e.currentTarget;
+    clicked.innerText="Deleting";
+    axios.delete(`/api/delete-category/${id}`).then(res=>{
+        if(res.data.status===200){
+            swal("Success",res.data.message,"success");
+            clicked.closest('tr').remove();
+        }else if(res.data.status===404){
+            swal("Success",res.data.message,"success");
+            clicked.innerText="Delete";
+        }
+    });
+}
+
 var showcategory_HTMLTABLE="";
 if(loading){
     return <h4>Loading category...</h4>
@@ -33,7 +48,7 @@ if(loading){
                     <Link to={`edit-category/${item.id}`} className="btn btn-success btn-sm=">Edit</Link>
                 </td>
                 <td>
-                    <button type="button" className="btn btn-danger btn-sm=">Delete</button>
+                    <button type="button" onClick={(e)=>deleteCategory(e,item.id)} className="btn btn-danger btn-sm=">Delete</button>
                 </td>
             </tr>
         )
@@ -41,7 +56,9 @@ if(loading){
 }
 
   return(
+      
       <div className="container px-4">
+       
           <div className="card mt-4">
           <div className="vard-header">
                 <h4>Category List

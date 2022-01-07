@@ -1,52 +1,63 @@
 import axios from "axios";
-import React, { useState } from "react";
-import swal from "sweetalert";
+import React, { useEffect,useState } from "react";
+import {Link} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-function Category() {
+import swal from "sweetalert";
 
-  const history=useHistory();
-    const[categoryInput,setCategory]=useState({
-        slug: '',
-        name: '',
-        description: '',
-        status: '',
-        meta_keyword: '',
-        meta_desription: '',
-        error_list:[],
-    });
+function EditCategory(props) {
+
+
+    const history=useHistory();
+    const[loading,setLoading]=useState(true);
+    const[categoryInput,setCategory]=useState({});
+    const [error,setError]=useState([]);
+
+    useEffect(()=>{
+        const category_id=props.match.params.id;
+        axios.get(`/api/edit-category/${category_id}`).then(res=>{
+           if(res.data.status===200){
+               setCategory(res.data.category);
+           }else if(res.data.status===404){
+                swal("Error",res.data.message,"error");
+                history.push('/admin/show-category');
+           }
+           setLoading(false);
+        });
+},[props.match.params.id,history]);
 
     const handleInput=(e)=>{
         e.persist();
-        setCategory({...categoryInput,[e.target.name]: e.target.value})
+        setCategory({...categoryInput,[e.target.name]: e.target.value});
     }
 
-
-    const submitCategory=(e)=>{
+    const updateCategory=(e)=>{
         e.preventDefault();
-        const data={
-            slug:categoryInput.slug,
-            name:categoryInput.name,
-            description:categoryInput.description,
-            status:categoryInput.status,
-            meta_keyword:categoryInput.meta_keyword,
-            meta_description:categoryInput.meta_desription,
-        }
-        axios.get("/sanctum/csrf-cookie").then(response => {
-        axios.post(`/api/add-category`,data).then(res=>{
+
+        const category_id=props.match.params.id;
+        const data=categoryInput;
+        axios.put(`/api/update-category/${category_id}`,data).then(res=>{
             if(res.data.status===200){
-                swal("Success","Category Added Successfully","success");
-                history.push("/admin/dashboard");
-            }else if(res.data.status===400){
-                setCategory({...categoryInput,error_list:res.data.errors});
+                swal("Success",res.data.message,"success");
+                setError([]);
+                history.push('/admin/show-category');
+            }else if(res.data.status===422){
+                swal("All fields must be filled","","warning");
+                setError(res.data.errors);
+            }else if(res.data.status===404){
+                swal("Error",res.data.message,"error");
+                history.push('/admin/show-category');
             }
         });
-    });
+    }
+
+    if(loading){
+        return <h4>Loading category data...</h4>
     }
 
   return (
-    <div className="container-fluid px-4">
-      <h1 className="mt-4">Add Category</h1>
-      <form onSubmit={submitCategory} id="category_form">
+    <div className="container px-4">
+      <Link to="/admin/show-category" className="btn btn-primary btn-sm">Back</Link>
+      <form onSubmit={updateCategory}>
 <ul className="nav nav-tabs" id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
@@ -60,22 +71,21 @@ function Category() {
   <div className="form-group mb-3">
           <label>Slug</label>
           <input type="text" name="slug" onChange={handleInput} value={categoryInput.slug} className="form-control" />
-          <span>{categoryInput.error_list.slug}</span>
+          <span className="text-danger">{error.slug}</span>
         </div>
         <div className="form-group mb-3">
           <label>Name</label>
           <input type="text" name="name" onChange={handleInput} value={categoryInput.name} className="form-control" />
-          <span>{categoryInput.error_list.name}</span>
+          <span className="text-danger">{error.name}</span>
         </div>
         <div className="form-group mb-3">
           <label>Description</label>
           <textarea name="description" onChange={handleInput} value={categoryInput.description} className="form-control" />
-          <span>{categoryInput.error_list.description}</span>
         </div>
         <div className="form-group mb-3">
           <label>Status</label>
           <input type="checkbox" name="status" onChange={handleInput} value={categoryInput.status}/>
-          <span>{categoryInput.error_list.status}</span>
+          <span className="text-danger">{error.status}</span>
         </div>
       </div>
   <div className="tab-pane fade" id="seo-tags" role="tabpanel" aria-labelledby="seo-tags-tab">
@@ -90,10 +100,10 @@ function Category() {
           </div>
       </div>
 </div>
-<button type="submit" className="btn btn-primary px-4 float-end">Submit</button>
+<button type="submit" className="btn btn-primary px-4 float-end">Update</button>
 </form>
     </div>
   );
 }
 
-export default Category;
+export default EditCategory;
