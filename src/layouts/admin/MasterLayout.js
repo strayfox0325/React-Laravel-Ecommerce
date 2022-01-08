@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
 import "../../assets/admin/css/styles.css";
 import "../../assets/admin/js/scripts";
 import Routes from "../../routes/Routes";
@@ -11,6 +10,7 @@ const MasterLayout = () => {
   return (
     <div className="sb-nav-fixed">
       <Navbar />
+  
       <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
           <Sidebar />
@@ -26,18 +26,14 @@ const MasterLayout = () => {
                       path={route.path}
                       exact={route.exact}
                       name={route.name}
-                      render={(props) => (
-                      <route.component {...props} />
-                    
-                        )}
+                      render={(props) => <route.component {...props} />}
                     />
                   )
                 );
               })}
-              <Redirect from="/admin" to="/admin/dashboard"/>
+              <Redirect from="/admin" to="/admin/dashboard" />
             </Switch>
           </main>
-          {/* <Footer /> */}
         </div>
       </div>
     </div>

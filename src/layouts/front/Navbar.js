@@ -22,12 +22,12 @@ function Navbar() {
     AuthButtons = (
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link" to="/login">
+          <Link className="nav-link active" to="/login">
             Login
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/register">
+          <Link className="nav-link active" to="/register">
             Register
           </Link>
         </li>
@@ -67,16 +67,16 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            {/*<li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/">
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+             <li className="nav-item">
               <Link className="nav-link active " to="/admin/dashboard">
                 Dashboard
               </Link>
-            </li>
+            </li> */}
             {AuthButtons}
           </ul>
         </div>

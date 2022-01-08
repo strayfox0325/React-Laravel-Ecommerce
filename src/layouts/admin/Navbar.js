@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <Link to="/admin"
@@ -16,7 +17,8 @@ const Navbar = () => {
         <i className="fas fa-bars"></i>
       </button>
       <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div className="input-group">
+    
+        <div className=" input-group">
           <input
             className="form-control"
             type="text"
@@ -68,7 +70,10 @@ const Navbar = () => {
           </ul>
         </li>
       </ul>
+      <script>
+</script>
     </nav>
+    
   );
 };
 
