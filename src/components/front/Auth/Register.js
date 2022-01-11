@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import Navbar from "../../../layouts/front/Navbar";
 import swal from 'sweetalert';
 import { useHistory } from "react-router-dom";
+import Darkmode from 'darkmode-js';
 
 
 
 function Register() {
-
+  new Darkmode().showWidget();
 const history=useHistory();
   const [registerInput, setRegister] = useState({
     name: "",

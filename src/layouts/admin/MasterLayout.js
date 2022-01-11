@@ -7,6 +7,7 @@ import Routes from "../../routes/Routes";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 const MasterLayout = () => {
+
   return (
     <div className="sb-nav-fixed">
       <Navbar />

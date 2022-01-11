@@ -3,8 +3,11 @@ import Navbar from "../../../layouts/front/Navbar";
 import axios from "axios";
 import swal from "sweetalert";
 import { useHistory } from "react-router-dom";
+import Darkmode from 'darkmode-js';
+
 
 function Login() {
+  new Darkmode().showWidget();
   const history = useHistory();
   const [loginInput, setLogin] = useState({
     email: "",
