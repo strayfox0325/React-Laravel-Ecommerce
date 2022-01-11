@@ -87,6 +87,11 @@ function Navbar() {
                 Collection
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/cart">
+                Cart
+              </Link>
+            </li>
             {AuthButtons}
           </ul>
         </div>

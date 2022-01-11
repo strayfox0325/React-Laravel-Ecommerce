@@ -43,7 +43,7 @@ function ProductDetails(props) {
           product_id:product.id,
           product_quantity:product.qty,
       }
-      axios.post(`api/add-to-cart`,data).then(res=>{
+      axios.post(`/api/add-to-cart`,data).then(res=>{
         if(res.data.status===201){
             swal("Success",res.data.message,"success");
         }else if(res.data.status===401){
@@ -63,7 +63,6 @@ function ProductDetails(props) {
     var in_stock = "";
 
     if(product.qty>0){
-    
     in_stock =
       <div>
         <label className="btn-sm btn-success px-4 mt-2">In Stock</label>
@@ -80,7 +79,7 @@ function ProductDetails(props) {
             </div>
           </div>
           <div className="col-md-3 mt-3">
-            <button type="button" className="btn btn-primary w-100">
+            <button type="button" onClick={submitToCart} className="btn btn-primary w-100">
               Add to Cart
             </button>
           </div>
@@ -126,13 +125,13 @@ function ProductDetails(props) {
               <p>{product.description}</p>
               <h4 className="mb-1">
                 Old:
-                <s className="ms-2">{product.original_price}</s>
-                &ensp;New: {product.selling_price}
+                <s className="ms-2 text-danger">{product.original_price}din</s>
+                &ensp;New: {product.selling_price}din
               </h4>
               <div>
                   {in_stock}
               </div>
-              <button type="button" onClick={submitToCart} className="btn btn-danger mt-3">
+              <button type="button" className="btn btn-danger mt-3">
                 Add to Wishlist
               </button>
             </div>

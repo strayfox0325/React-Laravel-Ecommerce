@@ -6,6 +6,8 @@ import Login from '../components/front/Auth/Login';
 import ShowCategory from '../components/front/collections/ShowCategory';
 import ShowProduct from '../components/front/collections/ShowProduct';
 import ProductDetails from '../components/front/collections/ProductDetails';
+import Cart from '../components/front/Cart';
+
 
 const PublicRouteList = [
     {path:'/', exact: true, name:'Home',component:Home},
@@ -16,5 +18,6 @@ const PublicRouteList = [
     {path:'/collections', exact: true, name:'ShowCategory',component:ShowCategory},
     {path:'/collections/:slug', exact: true, name:'ShowProduct',component:ShowProduct},
     {path:'/collections/:category/:product', exact: true, name:'ProductDetails',component:ProductDetails},
+    {path:'/cart', exact: true, name:'Cart',component:Cart},
 ];
 export default PublicRouteList;
