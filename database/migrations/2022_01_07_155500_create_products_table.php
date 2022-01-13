@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('brand');
             $table->string('selling_price');
             $table->string('original_price');
-            $table->string('qty');
+            $table->integer('qty');
             $table->string('image')->nullable();
             $table->tinyInteger('featured')->default(0)->nullable();
             $table->tinyInteger('popular')->default(0)->nullable();

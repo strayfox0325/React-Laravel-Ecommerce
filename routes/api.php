@@ -7,6 +7,8 @@ use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\FrontendController;
 use App\Http\Controllers\API\CartController;
+use App\Http\Controllers\API\CheckoutController;
+use App\Http\Controllers\API\OrderController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,11 +24,19 @@ Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
 Route::post('logout',[AuthController::class,'logout']);
 
-//User Routes
+//User Category Routes
 Route::get('get-category',[FrontendController::class,'category']);
+//User Product Routes
 Route::get('get-product/{slug}',[FrontendController::class,'product']);
 Route::get('view-product/{category_slug}/{product_slug}',[FrontendController::class,'viewProduct']);
+//User Cart Routes
 Route::post('add-to-cart',[CartController::class,'add']);
+Route::get('cart',[CartController::class,'index']);
+Route::put('cart-update/{cart_id}/{scope}',[CartController::class,'update']);
+Route::delete('delete-cartitem/{cart_id}',[CartController::class,'delete']);
+//User Checkout Routes
+Route::post('validate-order',[CheckoutController::class,'validateorder']);
+Route::post('place-order',[CheckoutController::class,'placeorder']);
 
 //Admin Category Routes
 Route::get('show-category',[CategoryController::class,'index']);
@@ -41,6 +51,9 @@ Route::post('add-product',[ProductController::class,'store']);
 Route::get('edit-product/{id}',[ProductController::class,'edit']);
 Route::post('update-product/{id}',[ProductController::class,'update']);
 Route::delete('delete-product/{id}',[ProductController::class,'destroy']);
+//Admin Order Routes
+Route::get('admin/orders',[OrderController::class,'index']);
+
 
 
  Route::middleware('auth:api')->get('/user', function (Request $request) {
