@@ -67,9 +67,9 @@ if(loading){
 
   return(
       
-      <div className="container px-4">
+      <div className="container px-4 mt-3">
        
-          <div className="card px-4 mt-3">
+          <div className="card">
           <div className="card-header">
                 <h4>Product List
                     <Link to="/admin/add-product" className="btn btn-primary btn-sm float-end">Add Product</Link>

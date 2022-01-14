@@ -9,6 +9,7 @@ import Product from '../components/admin/product/Product';
 import ShowProduct from '../components/admin/product/ShowProduct';
 import EditProduct from '../components/admin/product/EditProduct';
 
+import Order from '../components/admin/order/Order';
 const Routes = [
 
     //Auth Routes
@@ -23,6 +24,7 @@ const Routes = [
     {path:'/admin/show-product', exact: true, name:'ShowProduct', component: ShowProduct},
     {path:'/admin/edit-product/:id', exact: true, name:'EditProduct', component: EditProduct},
     {path:'/admin/add-product', exact: true, name:'Product', component: Product},
+    {path:'/admin/orders', exact: true, name:'Order', component: Order},
 
 ];
 export default Routes;
