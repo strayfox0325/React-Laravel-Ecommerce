@@ -49,7 +49,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white shadow sticky-top">
       <div className="container">
         <Link className="navbar-brand" to="/">
           Izzy Tech Store
@@ -72,7 +72,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/about">
                 About Us
               </Link>
@@ -81,7 +81,7 @@ function Navbar() {
               <Link className="nav-link active " to="/contact">
                 Contact
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/collections">
                 Collection

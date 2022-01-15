@@ -24,11 +24,11 @@ function ShowCategory(){
             <div className="col-md-4" key={idx}>
                 <div className="card">
                     <Link to="/collections">
-                        <img src="" className="w-100" alt={item.name}></img>
+                        <img src="https://picsum.photos/200" className="w-100" alt={item.name}></img>
                     </Link>
                     <div className="card-body">
                         <Link to={`collections/${item.slug}`}>
-                    <h5>{item.name}</h5>
+                    <h5 className='text-dark'>{item.name}</h5>
                     </Link>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ function ShowCategory(){
     }
     return(
         <div>
-            <div className="py-3 bg-warning">
+            <div className="py-3 bg-dark text-white">
                 <div className="container">
                     <h6>Categories</h6>
                 </div>

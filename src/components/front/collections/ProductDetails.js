@@ -96,7 +96,7 @@ function ProductDetails(props) {
 
   return (
     <div>
-      <div className="py-3 bg-warning">
+      <div className="py-3 bg-dark text-white">
         <div className="container">
           <h6>
             Collections / {product.category.name} / {product.name}
